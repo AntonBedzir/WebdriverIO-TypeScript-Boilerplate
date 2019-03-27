@@ -1,11 +1,13 @@
 import { expect } from 'chai';
+import GmailPage from './../pages/gmail.page'
 
-describe('webdriver.io page', () => {
-	it('should have the right title', () => {
-		browser.url('/');
-		const title = browser.getTitle();
-		expect(title).to.be.equal(
-			'WebdriverIO · Next-gen WebDriver test framework for Node.js'
-		);
+describe('Gmail tests', () => {
+	it('User should see a logo', () => {
+		let gmailPage = new GmailPage();
+		gmailPage.open();
+		gmailPage.waitForLogo();
+
+		expect(gmailPage.isLogoVisible).to.be.equal(
+			true);
 	});
 });
